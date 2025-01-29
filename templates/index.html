@@ -1,0 +1,80 @@
+{% import "macros/_icon-github.html" as github %}
+{% extends "partials/_base.html" %}
+
+{% block title %}
+  Static Jinja
+{% endblock %}
+
+{% block head %}
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@latest/dist/cdn.min.js"></script>
+  <style type="text/tailwindcss">
+    body {
+      @apply bg-zinc-950 text-zinc-300;
+    }
+    #root {
+      @apply h-screen w-screen grid place-items-center;
+    }
+    p a {
+      @apply text-cyan-500 underline hover:underline-offset-4;
+    }
+    code {
+      @apply bg-zinc-950/80 rounded-sm text-sm px-1;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <div class="bg-zinc-900/50 px-6 py-4 rounded-md border border-zinc-600/30
+              shadow-lg w-full max-w-lg mx-4">
+    <h1 class="font-black text-2xl border-b border-zinc-600/30 leading-12 mb-4">
+      Embrace Simplicity
+    </h1>
+    <p class="mb-4">
+      Writing a small project and React, Vue, Angular is too overkill for it?
+      Regect modernity, return to plain HTML.
+    </p>
+    <p class="mb-4">
+      Consider using the <a target="_blank" href="https://tailwindcss.com/docs/installation/play-cdn"
+      >TailwindCSS CDN</a> for the styles and/or <a target="_blank" href="https://alpinejs.dev/start-here"
+      >Alpine JS</a> to handle the application's state; if you want simple UI library
+      to speedup your development, I personaly recomend <a target="_blank" href="https://devdojo.com/pines/docs/how-to-use"
+      >Pines UI</a> for that. You can also check <a target="_blank" href="https://htmx.org/docs/#via-a-cdn-e-g-unpkg-com"
+      >HTMX</a> with the <a target="_blank" href="https://v1.htmx.org/extensions/client-side-templates/"
+      ><code>client-side-templates</code></a>extension to deal with REST APIs.
+    </p>
+    <p class="mb-4">
+      Finally, if you're having some problems with the templating system language
+      checkout the <a target="_blank" href="https://jinja.palletsprojects.com/en/stable/templates/#if"
+      >Jinja2 docs</a> for more information about <em>for loops</em>,
+      <em>macros</em>, etc.
+    </p>
+    <p class="mb-8">
+      Check the repositories bellow for more information, and consider giving a
+      star ⭐ to support the author's work:
+    </p>
+    <div class="*:inline-block space-x-1">
+      {% for item in [{"text": "Template repo", "icon": github, "highlight": True,
+                      "link": "https://github.com/staticjinja/staticjinja"},
+                     {"text": "Static Jinja repo", "icon": github, "highlight": False,
+                      "link": "https://github.com/staticjinja/staticjinja"}] %}
+        <a target="_blank" href="{{ item["link"] }}">
+          <button class="flex gap-2 items-center  px-4 py-2 text-sm font-bold
+                         rounded-md border text-white hover:scale-105
+                         transition-all duration-75 ease-linear cursor-pointer
+                         {{ item["highlight"]
+                           and "bg-green-600 border-green-200/30"
+                           or "bg-zinc-800 border-zinc-500/30" }}">
+            {{ item["icon"].render() }}
+            <span>
+              {{ item["text"] }}
+            </span>
+          </button>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block post %}
+{% endblock %}
