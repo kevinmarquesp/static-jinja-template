@@ -29,7 +29,7 @@ Ensure that you have all the dependencies installed:
 Now you need to clone this repository and enter it:
 
 ```sh
-git clone https://github.com/kevinmarquesp/static-jinja-template ./project-name
+git clone https://github.com/kevinmarquesp/staticjinja-template ./project-name
 cd ./project-name
 ```
 
