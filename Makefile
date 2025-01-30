@@ -10,10 +10,12 @@ PORT := 3000
 
 build:
 	[ -d $(VENV) ] || make venv
+	mkdir -v templates/$(STATIC)  # Ensure that this dir exists
 	$(STATICJINJA) build $(OPTS)
 
 dev:
 	[ -d $(VENV) ] || make venv
+	mkdir -v templates/$(STATIC)  # Ensure that this dir exists
 	$(STATICJINJA) watch $(OPTS) & $(LIVERELOAD) $(DIST) -p $(PORT)
 
 venv:
